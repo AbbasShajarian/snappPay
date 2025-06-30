@@ -1,0 +1,88 @@
+
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>ثبت وندور</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- استایل‌ها -->
+  <link rel="stylesheet" href="css/base/common.css" />
+  <link rel="stylesheet" href="css/pages/add-vendor.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- فونت فارسی اختیاری -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <h2>فرم ثبت وندور</h2>
+
+    <form id="vendorForm">
+      <div class="form-group">
+        <label>نام وندور:</label>
+        <input type="text" id="vendorName" required />
+      </div>
+
+      <div class="form-group">
+        <label>نام مدیر:</label>
+        <input type="text" id="managerName" required />
+      </div>
+
+      <div class="form-group">
+        <label>نوع وندور:</label>
+        <input type="text" id="vendorType" required />
+      </div>
+
+      <div id="map"></div>
+
+      <div class="form-group">
+        <label>شهر:</label>
+        <input type="text" id="city" />
+
+        <label>خیابان:</label>
+        <input type="text" id="street" />
+
+        <label>طول جغرافیایی:</label>
+        <input type="text" id="lat" readonly />
+
+        <label>عرض جغرافیایی:</label>
+        <input type="text" id="lng" readonly />
+      </div>
+
+      <div class="form-group">
+        <button type="button" onclick="startNegotiation()">شروع مذاکره</button>
+        <input type="text" id="startTime" readonly />
+
+        <button type="button" onclick="endNegotiation()">پایان مذاکره</button>
+        <input type="text" id="endTime" readonly />
+      </div>
+
+      <div class="form-group">
+        <label>نتیجه مذاکره:</label>
+        <select id="result">
+          <option value="">انتخاب کنید</option>
+          <option value="موفق">موفق</option>
+          <option value="نیاز به مذاکره مجدد">نیاز به مذاکره مجدد</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>آپلود عکس:</label>
+        <input type="file" id="photo" accept="image/*" />
+      </div>
+
+      <button type="submit">ثبت وندور</button>
+      <div id="msg"></div>
+    </form>
+
+    <button onclick="window.location.href='dashboard.html'">بازگشت به منو</button>
+  </div>
+
+  <!-- اسکریپت‌ها -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/vendor.js"></script>
+</body>
+</html>

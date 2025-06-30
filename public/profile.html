@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پروفایل</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body class="profile-page">
+
+  <div class="profile-container">
+    <h2>تغییر رمز عبور</h2>
+    <form id="changePasswordForm">
+      <label for="currentPassword">رمز عبور فعلی:</label>
+      <input type="password" id="currentPassword" required />
+
+      <label for="newPassword">رمز عبور جدید:</label>
+      <input type="password" id="newPassword" required />
+
+      <label for="confirmPassword">تکرار رمز عبور جدید:</label>
+      <input type="password" id="confirmPassword" required />
+
+      <button type="submit">تغییر رمز عبور</button>
+    </form>
+    <div id="message" class="message"></div>
+  </div>
+
+  <script src="js/header.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

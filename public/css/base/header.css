@@ -1,0 +1,90 @@
+/* header.css */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(135deg, #0077cc 0%, #005fa3 50%, #ffffff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+/*   
+  [dir="rtl"] .header {
+    background: linear-gradient(135deg, #ffffff 0%, #005fa3 50%, #0077cc 100%);
+    flex-direction: row;
+  }
+   */
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+  }
+  
+  .header-logo img {
+    height: 40px;
+    width: auto;
+  }
+  
+  .header-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .header-title h1 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    /* رنگ و سایز فونت تغییر نکرده */
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+  }
+  
+  .header-logout-btn, .header-back-btn {
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+  
+  .header-logout-btn:hover, .header-back-btn:hover {
+    background-color: rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.5);
+  }
+  
+  body.has-header {
+    padding-top: 80px;
+    min-height: calc(100vh - 80px);
+  }
+  
+  body.has-header.dashboard-page,
+  body.has-header.profile-page,
+  body.has-header.login-page {
+    height: auto;
+    min-height: calc(100vh - 80px);
+  }

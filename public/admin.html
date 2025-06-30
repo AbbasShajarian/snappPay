@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مدیریت کاربران</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <h2>مدیریت کاربران</h2>
+    
+    <!-- فرم اضافه کردن کاربر جدید -->
+    <div class="add-user-section">
+      <h3>افزودن کاربر جدید</h3>
+      <form id="addUserForm">
+        <div class="form-group">
+          <label for="newUsername">نام کاربری:</label>
+          <input type="text" id="newUsername" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="newPassword">رمز عبور:</label>
+          <input type="password" id="newPassword" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="newRole">نقش:</label>
+          <select id="newRole" required>
+            <option value="">انتخاب کنید</option>
+            <option value="admin">ادمین</option>
+            <option value="manager">مدیر</option>
+            <option value="user">کاربر</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="managerId">مدیر (اختیاری):</label>
+          <select id="managerId">
+            <option value="">بدون مدیر</option>
+          </select>
+        </div>
+        
+        <button type="submit">افزودن کاربر</button>
+      </form>
+      <div id="addUserMessage" class="message"></div>
+    </div>
+
+    <hr>
+
+    <!-- جدول کاربران -->
+    <div class="users-section">
+      <h3>لیست کاربران</h3>
+      <table id="usersTable">
+        <thead>
+          <tr>
+            <th>نام کاربری</th>
+            <th>نقش</th>
+            <th>مدیر</th>
+            <th>عملیات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- دیتا از JS میاد -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal ویرایش کاربر -->
+    <div id="editUserModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h3>ویرایش کاربر</h3>
+        <form id="editUserForm">
+          <input type="hidden" id="editUserId">
+          <div class="form-group">
+            <label for="editUsername">نام کاربری:</label>
+            <input type="text" id="editUsername" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="editPassword">رمز عبور جدید (اختیاری):</label>
+            <input type="password" id="editPassword" placeholder="برای تغییر رمز وارد کنید">
+          </div>
+          
+          <div class="form-group">
+            <label for="editRole">نقش:</label>
+            <select id="editRole" required>
+              <option value="admin">ادمین</option>
+              <option value="manager">مدیر</option>
+              <option value="user">کاربر</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="editManagerId">مدیر (اختیاری):</label>
+            <select id="editManagerId">
+              <option value="">بدون مدیر</option>
+            </select>
+          </div>
+          
+          <button type="submit">ذخیره تغییرات</button>
+          <button type="button" onclick="closeEditModal()">انصراف</button>
+        </form>
+        <div id="editUserMessage" class="message"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/header.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html> 

@@ -1,0 +1,191 @@
+body.login-page {
+    font-family: 'Tahoma', sans-serif;
+    background: linear-gradient(135deg, #f0f0f0, #c3e5ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    background-color: white;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    width: 300px;
+  }
+  
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .login-container label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+  }
+  
+  .login-container input {
+    width: 100%;
+    padding: 0.4rem;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+  }
+  
+  .login-container button {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .login-container button:hover {
+    background-color: #005fa3;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+
+
+
+
+  body.dashboard-page {
+    font-family: 'Tahoma', sans-serif;
+    background: linear-gradient(135deg, #f0f0f0, #c3e5ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* border-radius: 6px; */
+    /* padding: 2rem; */
+  }
+  
+  .dashboard-container {
+
+    width: 300px;
+    margin: auto;
+    background-color: white;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    text-align: center;
+  }
+  
+  .menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .menu-buttons button {
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: none;
+    background-color: #0077cc;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .menu-buttons button:hover {
+    background-color: #005fa3;
+  }
+  .logout-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    background-color: #f44336; /* قرمز ملایم */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .logout-button:hover {
+    background-color: #d32f2f; /* قرمز تیره‌تر هنگام هاور */
+  }
+
+
+  .exit {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .exit exit-buttom {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .exit exit-buttom:hover {
+    background-color: #005fa3;
+  }
+
+
+
+
+
+  
+  body.profile-page {
+    font-family: 'Tahoma', sans-serif;
+    background: linear-gradient(135deg, #f0f0f0, #c3e5ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+
+  
+  .profile-container {
+    max-width: 400px;
+    margin: auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .profile-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .message {
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  
+  .profile-container button {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .profile-container button:hover {
+    background-color: #005fa3;
+  }

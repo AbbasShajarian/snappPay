@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>داشبورد</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body class="dashboard-page">
+
+  <div class="dashboard-container">
+    <h2>داشبورد</h2>
+    <div id="welcome"></div>
+    <div class="menu-buttons">
+      <button onclick="goTo('profile.html')">پروفایل</button>
+      <button id="vendorBtn" onclick="goTo('add-vendor.html')">ثبت وندور</button>
+      <button onclick="goTo('report.html')">گزارش</button>
+      <button id="adminBtn" onclick="goTo('admin.html')">مدیریت کاربران</button>
+    </div>
+  </div>
+
+  <script src="js/header.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

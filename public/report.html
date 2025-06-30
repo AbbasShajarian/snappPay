@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>گزارش‌گیری وندورها</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>گزارش‌گیری وندورها</h2>
+    <form id="filterForm">
+      <div class="form-row">
+        <label>شهر:</label>
+        <select id="filterCity">
+          <option value="">همه</option>
+        </select>
+        <label>نوع فروشگاه:</label>
+        <select id="filterType">
+          <option value="">همه</option>
+          <option value="دیجیتال">دیجیتال</option>
+          <option value="لباس">لباس</option>
+          <option value="آرایشی بهداشتی">آرایشی بهداشتی</option>
+        </select>
+        <label>نوع منطقه مارکتینگی:</label>
+        <select id="filterMarketingAreaType">
+          <option value="">همه</option>
+          <option value="Mall">Mall</option>
+          <option value="Street">Street</option>
+        </select>
+        
+      </div>
+      <div class="form-row">
+        <label>نام منطقه مارکتینگی:</label>
+        <select id="filterMarketingAreaName">
+          <option value="">همه</option>
+        </select>
+        <label>دارای جواز کسب:</label>
+        <select id="filterHasValidLicense">
+          <option value="">همه</option>
+          <option value="بله">بله</option>
+          <option value="خیر">خیر</option>
+        </select>
+        <label>دارای اجاره‌نامه:</label>
+        <select id="filterHasRentalAgreement">
+          <option value="">همه</option>
+          <option value="بله">بله</option>
+          <option value="خیر">خیر</option>
+        </select>
+
+      </div>
+      <div class="form-row">
+        <label>مراجعه اول:</label>
+        <select id="filterIsFirstVisit">
+          <option value="">همه</option>
+          <option value="بله">بله</option>
+          <option value="خیر">خیر</option>
+        </select>
+        <label>قرارداد ثبت شد:</label>
+        <select id="filterContractRegistered">
+          <option value="">همه</option>
+          <option value="بله">بله</option>
+          <option value="خیر">خیر</option>
+        </select>
+        <label>اطلاعات حساب:</label>
+        <select id="filterHasBankAccount">
+          <option value="">همه</option>
+          <option value="بله">بله</option>
+          <option value="خیر">خیر</option>
+        </select>
+
+      </div>
+      <div class="form-row">
+        <label>حداقل متراژ 12 متر:</label>
+        <select id="filterHasMinimumArea">
+          <option value="">همه</option>
+          <option value="بله">بله</option>
+          <option value="خیر">خیر</option>
+        </select>
+        <label>نتیجه مذاکره:</label>
+        <select id="filterResult">
+          <option value="">همه</option>
+          <option value="مجدد پیگیری شود">مجدد پیگیری شود</option>
+        <option value="عدم حضور مدیریت">عدم حضور مدیریت</option>
+        <option value="عدم تمایل به همکاری">عدم تمایل به همکاری</option>
+        <option value="عدم تمایل به همکاری با اسنپ">عدم تمایل به همکاری با اسنپ</option>
+        <option value="نارضایتی از شرایط همکاری">نارضایتی از شرایط همکاری</option>
+        <option value="نارضایتی از نحوه پرداخت">نارضایتی از نحوه پرداخت</option>
+        <option value="نارضایتی از کمیسیون">نارضایتی از کمیسیون</option>
+        <option value="نارضایتی از عدم نمایش آنلاین">نارضایتی از عدم نمایش آنلاین</option>
+        </select>
+        <label>شخص انجام‌دهنده:</label>
+        <select id="filterPromoter">
+          <option value="">همه</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>از تاریخ:</label>
+        <input type="date" id="startDate" />
+        <label>تا تاریخ:</label>
+        <input type="date" id="endDate" />
+        <button type="submit">اعمال فیلتر</button>
+      </div>
+    </form>
+    <hr />
+    <table id="vendorTable">
+      <thead>
+        <tr>
+          <th>نام فروشگاه</th>
+          <th>نام مدیر</th>
+          <th>شماره تماس</th>
+          <th>نوع فروشگاه</th>
+          <th>نوع منطقه</th>
+          <th>نام منطقه</th>
+          <th>شهر</th>
+          <th>جواز کسب</th>
+          <th>اجاره‌نامه</th>
+          <th>مراجعه اول</th>
+          <th>قرارداد ثبت</th>
+          <th>شروع مذاکره</th>
+          <th>پایان</th>
+          <th>نتیجه</th>
+          <th>توضیحات</th>
+          <th>Promoter</th>
+          <th>عکس</th>
+          <th>مسیریابی</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- دیتا از JS میاد -->
+      </tbody>
+    </table>
+    <hr />
+    <div class="charts-section">
+      <div class="chart-container">
+        <canvas id="resultChart" height="100"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="firstVisitChart" height="100"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="marketingAreaChart" height="100"></canvas>
+      </div>
+    </div>
+  </div>
+  <script src="js/header.js"></script>
+  <script src="js/report.js"></script>
+</body>
+</html>

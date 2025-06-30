@@ -1,0 +1,57 @@
+/* pages/dashboard.css */
+
+.dashboard-container {
+    width: 300px;
+    margin: 80px auto 0;
+    background-color: white;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    text-align: center;
+  }
+  
+  .menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .menu-buttons button {
+    padding: 0.7rem;
+    /* استایل پیشفرض .5 بود اما من اینجا اینش کردم بقیه موارد همونه که توی مشترک بود */
+  }
+  
+  .logout-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    background-color: #f44336;
+    margin-top: 1rem;
+  }
+  
+  .logout-button:hover {
+    background-color: #d32f2f;
+  }
+
+
+  /* .dashboard-container .logout-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    background-color: #f44336; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .dashboard-container .logout-button:hover {
+    background-color: #d32f2f;
+  } */
+  
+  
+
+   /* | نسخه ساده         | به هر المنتی با کلاس `logout-button`، در هر جای صفحه، اعمال میشه       |
+| ----------------- | ---------------------------------------------------------------------- |
+| نسخه سلسله‌مراتبی | فقط اگر `logout-button` **داخل `dashboard-container`** باشه اعمال میشه | */

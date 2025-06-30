@@ -1,0 +1,11 @@
+/* main.css */
+
+@import './base/common.css';
+@import './base/header.css';
+
+@import './pages/login.css';
+@import './pages/dashboard.css';
+@import './pages/profile.css';
+@import './pages/admin.css';
+@import './pages/report.css';
+@import './pages/add-vendor.css';

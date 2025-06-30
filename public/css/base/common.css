@@ -1,0 +1,26 @@
+/* base/common.css */
+
+body {
+    font-family: 'Tahoma', sans-serif;
+    background: linear-gradient(135deg, #f0f0f0, #c3e5ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  button {
+    /* هر جا از این استفاده شده باشه همیناست اما میشه توی هر کدوم از صفحات اینو باز بهینه کرد مثلا پدینگ اینجا نیم هست اونجا بذاری 7 و بقیه مواردش رو نیاری مال همینو میاره */
+    padding: 0.5rem;    
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #005fa3;
+  }
+  

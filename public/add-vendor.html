@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ثبت وندور</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- فونت فارسی اختیاری -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+  <div class="vendor-container">
+    <h2>ثبت وندور جدید</h2>
+    <form id="vendor-form">
+      <!-- مذاکره -->
+      <div class="negotiation-section">
+        <button type="button" id="start-negotiation">شروع مذاکره</button>
+        <div class="timestamp" id="start-timestamp"></div>
+      </div>
+      <!-- اطلاعات اصلی -->
+      <label for="shop-name">نام فروشگاه</label>
+      <input type="text" id="shop-name" required>
+
+      <label for="manager-name">نام مدیر</label>
+      <input type="text" id="manager-name" required>
+
+      <label for="phone-number">شماره تماس</label>
+      <input type="tel" id="phone-number" required>
+
+      <!-- نوع فروشگاه -->
+      <label for="shop-type">نوع فروشگاه</label>
+      <select id="shop-type" required>
+        <option value="" disabled selected>انتخاب کنید</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Health & Beauty">Health & Beauty</option>
+        <option value="Home & Kitchen">Home & Kitchen</option>
+        <option value="Digital">Digital</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Sport & Travel">Sport & Travel</option>
+        <option value="Tools">Tools</option>
+        <option value="Calture">Calture</option>
+      </select>
+
+      <!-- نوع منطقه مارکتینگی -->
+      <label for="marketing-area-type">نوع منطقه مارکتینگی</label>
+      <select id="marketing-area-type" required>
+        <option value="" disabled selected>انتخاب کنید</option>
+        <option value="Mall">Mall</option>
+        <option value="Street">Street</option>
+      </select>
+
+      <!-- نام منطقه مارکتینگی -->
+      <label for="marketing-area-name">نام منطقه مارکتینگی</label>
+      <select id="marketing-area-name" required>
+        <option value="" disabled selected>انتخاب کنید</option>
+      </select>
+
+      <!-- مجوز و اجاره -->
+      <label for="has-valid-license">دارای جواز کسب معتبر به نام صاحب فروشگاه</label>
+      <select id="has-valid-license" required>
+        <option value="" disabled selected>انتخاب کنید</option>
+        <option value="بله">بله</option>
+        <option value="خیر">خیر</option>
+      </select>
+
+      <label for="has-rental-agreement">دارای اجاره‌نامه رسمی به نام صاحب فروشگاه</label>
+      <select id="has-rental-agreement" required>
+        <option value="" disabled selected>انتخاب کنید</option>
+        <option value="بله">بله</option>
+        <option value="خیر">خیر</option>
+      </select>
+
+      <label for="is-first-visit">مراجعه اول است</label>
+      <select id="is-first-visit" required>
+        <option value="" disabled selected>انتخاب کنید</option>
+        <option value="بله">بله</option>
+        <option value="خیر">خیر</option>
+      </select>
+
+      <label for="contract-registered">قرارداد ثبت شد</label>
+      <select id="contract-registered" required>
+        <option value="" disabled selected>انتخاب کنید</option>
+        <option value="بله">بله</option>
+        <option value="خیر">خیر</option>
+      </select>
+
+      <!-- نقشه -->
+      <div class="map-section">
+        <label>موقعیت وندور</label>
+        <div id="map" style="height: 200px; width: 100%;"></div>
+        <div class="location-info">
+          <input type="text" id="city" placeholder="شهر" readonly>
+          <input type="text" id="street" placeholder="خیابان" readonly>
+          <input type="text" id="latitude" placeholder="عرض جغرافیایی" readonly>
+          <input type="text" id="longitude" placeholder="طول جغرافیایی" readonly>
+        </div>
+      </div>
+
+      
+
+      <!-- فیلدهای شرطی برای قرارداد ثبت شده -->
+      <div id="contract-fields" style="display: none;">
+        <label for="has-bank-account">اطلاعات حساب مربوط به صاحب جواز کسب و یا اجاره نامه</label>
+        <select id="has-bank-account">
+          <option value="" disabled selected>انتخاب کنید</option>
+          <option value="بله">بله</option>
+          <option value="خیر">خیر</option>
+        </select>
+
+        <label for="has-showcase-signboard">دارای ویترین و تابلو یا سردر نصب شده و واضح(ویژه راسته ها)</label>
+        <select id="has-showcase-signboard">
+          <option value="" disabled selected>انتخاب کنید</option>
+          <option value="بله">بله</option>
+          <option value="خیر">خیر</option>
+        </select>
+
+        <label for="has-minimum-area">حداقل متراژ فروشگاه 12 متر</label>
+        <select id="has-minimum-area">
+          <option value="" disabled selected>انتخاب کنید</option>
+          <option value="بله">بله</option>
+          <option value="خیر">خیر</option>
+        </select>
+
+        <label for="vendor-image">آپلود تصویر سردر فروشگاه</label>
+        <input type="file" id="vendor-image" accept="image/*">
+      </div>
+
+
+      <!-- نتیجه مذاکره -->
+      <label for="negotiation-result">نتیجه مذاکره</label>
+      <select id="negotiation-result" required>
+        <option value="" disabled selected>انتخاب کنید</option>
+        <option value="مجدد پیگیری شود">مجدد پیگیری شود</option>
+        <option value="عدم حضور مدیریت">عدم حضور مدیریت</option>
+        <option value="عدم تمایل به همکاری">عدم تمایل به همکاری</option>
+        <option value="عدم تمایل به همکاری با اسنپ">عدم تمایل به همکاری با اسنپ</option>
+        <option value="نارضایتی از شرایط همکاری">نارضایتی از شرایط همکاری</option>
+        <option value="نارضایتی از نحوه پرداخت">نارضایتی از نحوه پرداخت</option>
+        <option value="نارضایتی از کمیسیون">نارضایتی از کمیسیون</option>
+        <option value="نارضایتی از عدم نمایش آنلاین">نارضایتی از عدم نمایش آنلاین</option>
+      </select>
+
+      <!-- توضیحات -->
+      <label for="description">توضیحات</label>
+      <textarea id="description" rows="3" placeholder="توضیحات اختیاری..."></textarea>
+
+
+
+      <div class="negotiation-section">
+      <!-- پایان مذاکره -->
+      <button type="button" id="end-negotiation">پایان مذاکره</button>
+      <div class="timestamp" id="end-timestamp"></div>
+    </div>
+
+      <button type="submit" class="submit-button">ثبت وندور</button>
+    </form>
+    <div class="message" id="form-message"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/vendor.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

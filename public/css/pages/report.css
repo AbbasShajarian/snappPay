@@ -1,0 +1,189 @@
+/* report.css - فقط استایل‌های خاص صفحه گزارش */
+
+.container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 32px 18px 24px 18px;
+  max-width: 1200px;
+  margin: auto auto 0;
+  direction: rtl;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 28px;
+  color: #0077cc;
+  font-size: 1.5rem;
+}
+
+form#filterForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 12px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 180px;
+  min-width: 120px;
+  max-width: 220px;
+  box-sizing: border-box;
+}
+
+.form-row.full-width {
+  flex: 1 1 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.form-row label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  text-align: right;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-row select,
+.form-row input[type="date"] {
+  padding: 7px 8px;
+  border: 1px solid #bcdffb;
+  border-radius: 5px;
+  font-size: 15px;
+  background: #f7fbff;
+  color: #222;
+  margin-bottom: 2px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form#filterForm button[type="submit"] {
+  width: 100%;
+  padding: 10px 0;
+  background: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  transition: background 0.2s;
+}
+
+form#filterForm button[type="submit"]:hover {
+  background: #005fa3;
+}
+
+.charts-section {
+  margin: 32px 0 18px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.chart-container {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 18px 10px;
+  text-align: center;
+}
+
+.chart-container canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.table-section {
+  overflow-x: auto;
+}
+
+#vendorTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+  background: #fff;
+  direction: rtl;
+  table-layout: auto;
+  word-break: break-word;
+  font-size: 13px;
+}
+
+#vendorTable th, #vendorTable td {
+  padding: 8px 4px;
+  border-bottom: 1px solid #e3e3e3;
+  text-align: right;
+  font-size: 13px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  vertical-align: top;
+}
+
+#vendorTable th {
+  background: #eaf6ff;
+  font-weight: bold;
+  color: #0077cc;
+  white-space: nowrap;
+}
+
+#vendorTable tr:hover {
+  background: #f5faff;
+}
+
+/* Navigation button styling */
+#vendorTable button {
+  transition: background 0.2s;
+}
+
+#vendorTable button:hover {
+  background: #005fa3 !important;
+}
+
+.back-btn {
+  margin-top: 24px;
+  background: #888;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 24px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: #555;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 98vw;
+    padding: 8px 2vw;
+  }
+  form#filterForm {
+    flex-direction: column;
+    gap: 10px 0;
+  }
+  .form-row, .form-row.full-width {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .table-section {
+    padding: 0;
+  }
+  #vendorTable {
+    min-width: 800px;
+    font-size: 12px;
+  }
+  #vendorTable th, #vendorTable td {
+    padding: 6px 3px;
+    font-size: 12px;
+  }
+  .charts-section {
+    grid-template-columns: 1fr;
+  }
+}

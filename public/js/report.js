@@ -94,9 +94,8 @@ function fillTable(vendors) {
       <td>${v.shop_type || ''}</td>
       <td>${v.marketing_area_type || ''}</td>
       <td>${v.marketing_area_name || ''}</td>
-      <td>${v.city || ''}</td>
-      <td>${v.has_valid_license || ''}</td>
-      <td>${v.has_rental_agreement || ''}</td>
+      <td>${v.marketing_city || ''}</td>
+      <td>${v.street || ''}</td>
       <td>${v.is_first_visit || ''}</td>
       <td>${v.contract_registered || ''}</td>
       <td>${formatDate(v.start_time) || ''}</td>
@@ -106,12 +105,7 @@ function fillTable(vendors) {
       <td>${v.description || ''}</td>
       <td>${v.promoter_name || ''}</td>
       <td>${v.photo ? `<img src="${v.photo}" alt="عکس" style="max-width:60px;max-height:60px;border-radius:6px;">` : ''}</td>
-      <td>
-        ${v.latitude && v.longitude ? 
-          `<button onclick="openNavigation(${v.latitude}, ${v.longitude})" style="background:#0077cc;color:white;border:none;border-radius:4px;padding:4px 8px;cursor:pointer;font-size:12px;">🗺️ مسیر</button>` : 
-          '<span style="color:#999;">بدون مختصات</span>'
-        }
-      </td>
+      <td>${v.latitude && v.longitude ? `<button onclick="openNavigation(${v.latitude}, ${v.longitude})" style="background:#0077cc;color:white;border:none;border-radius:4px;padding:4px 8px;cursor:pointer;font-size:12px;">🗺️ مسیر</button>` : '<span style="color:#999;">بدون مختصات</span>'}</td>
     `;
     tbody.appendChild(tr);
   });
@@ -124,14 +118,14 @@ async function fillFilters(vendors) {
   const marketingAreasSet = new Set();
     const promoterMap = new Map();
   vendors.forEach(v => {
-    if (v.city) citySet.add(v.city);
+    if (v.marketing_city) citySet.add(v.marketing_city);
     if (v.shop_type) typeSet.add(v.shop_type);
     if (v.marketing_area_name) marketingAreasSet.add(v.marketing_area_name);
     if (v.promoter_name && v.created_by) promoterMap.set(v.created_by, v.promoter_name);
   });
   
-  // شهر
-  const citySel = document.getElementById('filterCity');
+  // شهر مارکتینگی
+  const citySel = document.getElementById('filterMarketingCity');
   citySel.innerHTML = '<option value="">همه</option>';
   citySet.forEach(city => {
     citySel.innerHTML += `<option value="${city}">${city}</option>`;
@@ -326,7 +320,8 @@ window.addEventListener('DOMContentLoaded', async () => {
           v.shop_type || '',
           v.marketing_area_type || '',
           v.marketing_area_name || '',
-          v.city || '',
+          v.marketing_city || '',
+          v.street || '',
           v.is_first_visit || '',
           v.contract_registered || '',
           formatDate(v.start_time) || '',

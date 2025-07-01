@@ -73,9 +73,9 @@ router.post('/list', (req, res) => {
         finalQuery += ` AND vendors.has_minimum_area = ?`;
         finalParams.push(filters.has_minimum_area);
       }
-      if (filters?.city) {
-        finalQuery += ` AND vendors.city = ?`;
-        finalParams.push(filters.city);
+      if (filters?.marketing_city) {
+        finalQuery += ` AND vendors.marketing_city = ?`;
+        finalParams.push(filters.marketing_city);
       }
       if (filters?.promoterId) {
         finalQuery += ` AND vendors.created_by = ?`;
@@ -139,9 +139,9 @@ router.post('/list', (req, res) => {
     baseQuery += ` AND vendors.has_minimum_area = ?`;
     params.push(filters.has_minimum_area);
   }
-  if (filters?.city) {
-    baseQuery += ` AND vendors.city = ?`;
-    params.push(filters.city);
+  if (filters?.marketing_city) {
+    baseQuery += ` AND vendors.marketing_city = ?`;
+    params.push(filters.marketing_city);
   }
   if (filters?.promoterId) {
     baseQuery += ` AND vendors.created_by = ?`;
@@ -166,30 +166,30 @@ router.post('/list', (req, res) => {
 // افزودن وندور جدید
 router.post('/add', (req, res) => {
   const {
-    shop_name, manager_name, phone_number, shop_type, marketing_area_type, marketing_area_name,
+    shop_name, manager_name, phone_number, shop_type, marketing_city, marketing_area_type, marketing_area_name,
     has_valid_license, has_rental_agreement, is_first_visit, contract_registered,
-    start_time, end_time, negotiation_result, description, has_bank_account,
-    has_showcase_signboard, has_minimum_area, photo, latitude, longitude, city, street, created_by
+    start_time, end_time, negotiation_result, refuse_reason, description,
+    has_bank_account, has_showcase_signboard, has_minimum_area, photo, latitude, longitude, street, created_by
   } = req.body;
 
-  if (!shop_name || !manager_name || !phone_number || !shop_type || !marketing_area_type || 
+  if (!shop_name || !manager_name || !phone_number || !shop_type || !marketing_city || !marketing_area_type || 
       !marketing_area_name || !has_valid_license || !has_rental_agreement || !is_first_visit || 
       !contract_registered || !created_by) {
     return res.status(400).json({ error: 'همه فیلدهای ضروری را پر کنید' });
   }
 
   const query = `INSERT INTO vendors
-    (shop_name, manager_name, phone_number, shop_type, marketing_area_type, marketing_area_name,
+    (shop_name, manager_name, phone_number, shop_type, marketing_city, marketing_area_type, marketing_area_name,
      has_valid_license, has_rental_agreement, is_first_visit, contract_registered,
-     start_time, end_time, negotiation_result, description, has_bank_account,
-     has_showcase_signboard, has_minimum_area, photo, latitude, longitude, city, street, created_by)
+     start_time, end_time, negotiation_result, refuse_reason, description,
+     has_bank_account, has_showcase_signboard, has_minimum_area, photo, latitude, longitude, street, created_by)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
   
   const params = [
-    shop_name, manager_name, phone_number, shop_type, marketing_area_type, marketing_area_name,
+    shop_name, manager_name, phone_number, shop_type, marketing_city, marketing_area_type, marketing_area_name,
     has_valid_license, has_rental_agreement, is_first_visit, contract_registered,
-    start_time, end_time, negotiation_result, description, has_bank_account,
-    has_showcase_signboard, has_minimum_area, photo, latitude, longitude, city, street, created_by
+    start_time, end_time, negotiation_result, refuse_reason, description,
+    has_bank_account, has_showcase_signboard, has_minimum_area, photo, latitude, longitude, street, created_by
   ];
 
   db.run(query, params, function(err) {

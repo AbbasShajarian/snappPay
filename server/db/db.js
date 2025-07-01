@@ -37,6 +37,7 @@ db.run(`
     manager_name TEXT NOT NULL,
     phone_number TEXT NOT NULL,
     shop_type TEXT NOT NULL,
+    marketing_city TEXT NOT NULL,
     marketing_area_type TEXT NOT NULL,
     marketing_area_name TEXT NOT NULL,
     is_first_visit TEXT NOT NULL,
@@ -51,7 +52,6 @@ db.run(`
     photo TEXT,
     latitude REAL,
     longitude REAL,
-    city TEXT,
     street TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );

@@ -43,6 +43,14 @@
         <option value="Calture">Calture</option>
       </select>
 
+      <!-- شهر مارکتینگی -->
+      <label for="marketing-city">شهر مارکتینگی</label>
+      <select id="marketing-city" required>
+        <option value="" disabled selected>انتخاب کنید</option>
+        <option value="تهران">تهران</option>
+        <option value="کرج">کرج</option>
+      </select>
+
       <!-- نوع منطقه مارکتینگی -->
       <label for="marketing-area-type">نوع منطقه مارکتینگی</label>
       <select id="marketing-area-type" required>
@@ -76,7 +84,6 @@
         <label>موقعیت وندور</label>
         <div id="map" style="height: 200px; width: 100%;"></div>
         <div class="location-info">
-          <input type="text" id="city" placeholder="شهر" readonly>
           <input type="text" id="street" placeholder="خیابان" readonly>
           <input type="text" id="latitude" placeholder="عرض جغرافیایی" readonly>
           <input type="text" id="longitude" placeholder="طول جغرافیایی" readonly>

@@ -7,43 +7,33 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Global variable to hold the marker
 let marker = null;
 
-// Marketing area data
+// نمونه تستی ساختار مناطق مارکتینگی بر اساس شهر و نوع منطقه
 const marketingAreas = {
-  Mall: [
-    'مجتمع بوستان',
-    'تیراژه 1',
-    'تیراژه 2',
-    'پاساژ قائم',
-    'سیوان سنتر',
-    'مرکز خرید ونک',
-    'سون سنتر',
-    'مرکز خرید ظفر',
-    'اندیشه',
-    'پاساژ نصر'
-  ],
-  Street: [
-    'هفت‌حوض - نارمک',
-    'جمهوری',
-    'منوچهری',
-    'منیریه',
-    'خیابان بهشتی (سه‌راه گوهردشت)',
-    'خیابان گوهردشت (رجایی‌شهر)',
-    'خیابان طالقانی',
-    'خیابان درختی'
-  ]
+  'تهران': {
+    'Mall': [
+      'مجتمع بوستان', 'تیراژه 1', 'تیراژه 2', 'پاساژ قائم'
+    ],
+    'Street': [
+      'هفت‌حوض - نارمک', 'جمهوری', 'منوچهری'
+    ]
+  },
+  'کرج': {
+    'Mall': [
+      'مهستان', 'پاساژ گوهر', 'پاساژ مادر'
+    ],
+    'Street': [
+      'خیابان بهشتی', 'خیابان گوهردشت'
+    ]
+  }
 };
 
-// Function to update marketing area name options
 function updateMarketingAreaNameOptions() {
+  const city = document.getElementById('marketing-city').value;
   const marketingAreaType = document.getElementById('marketing-area-type').value;
   const marketingAreaNameSelect = document.getElementById('marketing-area-name');
-  
-  // Clear existing options
   marketingAreaNameSelect.innerHTML = '<option value="" disabled selected>انتخاب کنید</option>';
-  
-  if (marketingAreaType && marketingAreas[marketingAreaType]) {
-    // Add options based on selected type
-    marketingAreas[marketingAreaType].forEach(area => {
+  if (city && marketingAreaType && marketingAreas[city] && marketingAreas[city][marketingAreaType]) {
+    marketingAreas[city][marketingAreaType].forEach(area => {
       const option = document.createElement('option');
       option.value = area;
       option.textContent = area;
@@ -51,6 +41,9 @@ function updateMarketingAreaNameOptions() {
     });
   }
 }
+
+document.getElementById('marketing-city').addEventListener('change', updateMarketingAreaNameOptions);
+document.getElementById('marketing-area-type').addEventListener('change', updateMarketingAreaNameOptions);
 
 // Add location button to map
 const locationButton = L.Control.extend({
@@ -148,24 +141,19 @@ function formatTime(date = new Date()) {
 function updateLocation(latitude, longitude) {
   document.getElementById('latitude').value = latitude.toFixed(6);
   document.getElementById('longitude').value = longitude.toFixed(6);
-
-  // Reverse geocoding to get city and street
   fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
     .then(response => response.json())
     .then(data => {
-      const city = data.address.city || data.address.town || 'نامشخص';
       const street = data.address.road || 'نامشخص';
-      document.getElementById('city').value = city;
       document.getElementById('street').value = street;
       if (marker) {
-        marker.setPopupContent(`موقعیت: ${city}, ${street}`).openPopup();
+        marker.setPopupContent(`خیابان: ${street}`).openPopup();
       }
     })
     .catch(() => {
-      document.getElementById('city').value = 'نامشخص';
       document.getElementById('street').value = 'نامشخص';
       if (marker) {
-        marker.setPopupContent('موقعیت: نامشخص').openPopup();
+        marker.setPopupContent('خیابان: نامشخص').openPopup();
       }
     });
 }
@@ -260,9 +248,6 @@ document.getElementById('end-negotiation').addEventListener('click', () => {
 // Contract registered change event
 document.getElementById('contract-registered').addEventListener('change', handleContractRegisteredChange);
 
-// Marketing area type change event
-document.getElementById('marketing-area-type').addEventListener('change', updateMarketingAreaNameOptions);
-
 // نمایش شرطی دلیل عدم همکاری
 const negotiationResultSelect = document.getElementById('negotiation-result');
 const refuseReasonContainer = document.getElementById('refuse-reason-container');
@@ -305,6 +290,9 @@ async function sendVendor(data) {
     } else {
       data.refuse_reason = '';
     }
+    // city حذف شود و marketing_city ارسال شود
+    data.marketing_city = document.getElementById('marketing-city').value;
+    delete data.city;
     const res = await fetch('http://localhost:3000/api/vendor/add', {
       method: 'POST',
       headers: {
@@ -382,7 +370,6 @@ document.getElementById('vendor-form').addEventListener('submit', async (e) => {
     photo: '',
     latitude: document.getElementById('latitude').value,
     longitude: document.getElementById('longitude').value,
-    city: document.getElementById('city').value,
     street: document.getElementById('street').value,
     created_by: user.id
   };

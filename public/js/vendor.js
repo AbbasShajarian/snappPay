@@ -263,6 +263,23 @@ document.getElementById('contract-registered').addEventListener('change', handle
 // Marketing area type change event
 document.getElementById('marketing-area-type').addEventListener('change', updateMarketingAreaNameOptions);
 
+// نمایش شرطی دلیل عدم همکاری
+const negotiationResultSelect = document.getElementById('negotiation-result');
+const refuseReasonContainer = document.getElementById('refuse-reason-container');
+const refuseReasonSelect = document.getElementById('refuse-reason');
+if (negotiationResultSelect) {
+  negotiationResultSelect.addEventListener('change', function() {
+    if (this.value === 'عدم تمایل به همکاری') {
+      refuseReasonContainer.style.display = 'block';
+      refuseReasonSelect.required = true;
+    } else {
+      refuseReasonContainer.style.display = 'none';
+      refuseReasonSelect.required = false;
+      refuseReasonSelect.value = '';
+    }
+  });
+}
+
 // Function to read file as Base64
 function readFileAsBase64(file) {
   return new Promise((resolve, reject) => {
@@ -278,6 +295,16 @@ async function sendVendor(data) {
   const msg = document.getElementById('form-message');
   try {
     const token = localStorage.getItem('token');
+    // حذف فیلدهای حذف‌شده از data
+    delete data.has_valid_license;
+    delete data.has_rental_agreement;
+    delete data.has_bank_account;
+    // افزودن refuse_reason اگر لازم بود
+    if (data.negotiation_result === 'عدم تمایل به همکاری') {
+      data.refuse_reason = refuseReasonSelect.value;
+    } else {
+      data.refuse_reason = '';
+    }
     const res = await fetch('http://localhost:3000/api/vendor/add', {
       method: 'POST',
       headers: {

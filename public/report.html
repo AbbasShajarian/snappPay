@@ -36,21 +36,6 @@
         <select id="filterMarketingAreaName">
           <option value="">همه</option>
         </select>
-        <label>دارای جواز کسب:</label>
-        <select id="filterHasValidLicense">
-          <option value="">همه</option>
-          <option value="بله">بله</option>
-          <option value="خیر">خیر</option>
-        </select>
-        <label>دارای اجاره‌نامه:</label>
-        <select id="filterHasRentalAgreement">
-          <option value="">همه</option>
-          <option value="بله">بله</option>
-          <option value="خیر">خیر</option>
-        </select>
-
-      </div>
-      <div class="form-row">
         <label>مراجعه اول:</label>
         <select id="filterIsFirstVisit">
           <option value="">همه</option>
@@ -63,36 +48,13 @@
           <option value="بله">بله</option>
           <option value="خیر">خیر</option>
         </select>
-        <label>اطلاعات حساب:</label>
-        <select id="filterHasBankAccount">
+        <label>دلیل عدم همکاری:</label>
+        <select id="filterRefuseReason">
           <option value="">همه</option>
-          <option value="بله">بله</option>
-          <option value="خیر">خیر</option>
-        </select>
-
-      </div>
-      <div class="form-row">
-        <label>حداقل متراژ 12 متر:</label>
-        <select id="filterHasMinimumArea">
-          <option value="">همه</option>
-          <option value="بله">بله</option>
-          <option value="خیر">خیر</option>
-        </select>
-        <label>نتیجه مذاکره:</label>
-        <select id="filterResult">
-          <option value="">همه</option>
-          <option value="مجدد پیگیری شود">مجدد پیگیری شود</option>
-        <option value="عدم حضور مدیریت">عدم حضور مدیریت</option>
-        <option value="عدم تمایل به همکاری">عدم تمایل به همکاری</option>
-        <option value="عدم تمایل به همکاری با اسنپ">عدم تمایل به همکاری با اسنپ</option>
-        <option value="نارضایتی از شرایط همکاری">نارضایتی از شرایط همکاری</option>
-        <option value="نارضایتی از نحوه پرداخت">نارضایتی از نحوه پرداخت</option>
-        <option value="نارضایتی از کمیسیون">نارضایتی از کمیسیون</option>
-        <option value="نارضایتی از عدم نمایش آنلاین">نارضایتی از عدم نمایش آنلاین</option>
-        </select>
-        <label>شخص انجام‌دهنده:</label>
-        <select id="filterPromoter">
-          <option value="">همه</option>
+          <option value="نداشتن مدرک و یا جواز معتبر">نداشتن مدرک و یا جواز معتبر</option>
+          <option value="درصد کمیسیون">درصد کمیسیون</option>
+          <option value="بازه پرداخت">بازه پرداخت</option>
+          <option value="عدم تمایل کلی به همکاری با اسنپ">عدم تمایل کلی به همکاری با اسنپ</option>
         </select>
       </div>
       <div class="form-row">
@@ -104,33 +66,33 @@
       </div>
     </form>
     <hr />
-    <table id="vendorTable">
-      <thead>
-        <tr>
-          <th>نام فروشگاه</th>
-          <th>نام مدیر</th>
-          <th>شماره تماس</th>
-          <th>نوع فروشگاه</th>
-          <th>نوع منطقه</th>
-          <th>نام منطقه</th>
-          <th>شهر</th>
-          <th>جواز کسب</th>
-          <th>اجاره‌نامه</th>
-          <th>مراجعه اول</th>
-          <th>قرارداد ثبت</th>
-          <th>شروع مذاکره</th>
-          <th>پایان</th>
-          <th>نتیجه</th>
-          <th>توضیحات</th>
-          <th>Promoter</th>
-          <th>عکس</th>
-          <th>مسیریابی</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- دیتا از JS میاد -->
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <button id="downloadCsvBtn" style="margin-bottom:10px;float:left;">دانلود CSV</button>
+      <table id="vendorTable">
+        <thead>
+          <tr>
+            <th>نام فروشگاه</th>
+            <th>نام مدیر</th>
+            <th>شماره تماس</th>
+            <th>نوع فروشگاه</th>
+            <th>نوع منطقه مارکتینگی</th>
+            <th>نام منطقه مارکتینگی</th>
+            <th>شهر</th>
+            <th>مراجعه اول</th>
+            <th>قرارداد ثبت شد</th>
+            <th>شروع مذاکره</th>
+            <th>پایان مذاکره</th>
+            <th>نتیجه مذاکره</th>
+            <th>دلیل عدم همکاری</th>
+            <th>توضیحات</th>
+            <th>انجام‌دهنده</th>
+            <th>عکس</th>
+            <th>مسیریابی</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
     <hr />
     <div class="charts-section">
       <div class="chart-container">

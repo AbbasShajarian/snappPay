@@ -57,21 +57,6 @@
         <option value="" disabled selected>انتخاب کنید</option>
       </select>
 
-      <!-- مجوز و اجاره -->
-      <label for="has-valid-license">دارای جواز کسب معتبر به نام صاحب فروشگاه</label>
-      <select id="has-valid-license" required>
-        <option value="" disabled selected>انتخاب کنید</option>
-        <option value="بله">بله</option>
-        <option value="خیر">خیر</option>
-      </select>
-
-      <label for="has-rental-agreement">دارای اجاره‌نامه رسمی به نام صاحب فروشگاه</label>
-      <select id="has-rental-agreement" required>
-        <option value="" disabled selected>انتخاب کنید</option>
-        <option value="بله">بله</option>
-        <option value="خیر">خیر</option>
-      </select>
-
       <label for="is-first-visit">مراجعه اول است</label>
       <select id="is-first-visit" required>
         <option value="" disabled selected>انتخاب کنید</option>
@@ -102,13 +87,6 @@
 
       <!-- فیلدهای شرطی برای قرارداد ثبت شده -->
       <div id="contract-fields" style="display: none;">
-        <label for="has-bank-account">اطلاعات حساب مربوط به صاحب جواز کسب و یا اجاره نامه</label>
-        <select id="has-bank-account">
-          <option value="" disabled selected>انتخاب کنید</option>
-          <option value="بله">بله</option>
-          <option value="خیر">خیر</option>
-        </select>
-
         <label for="has-showcase-signboard">دارای ویترین و تابلو یا سردر نصب شده و واضح(ویژه راسته ها)</label>
         <select id="has-showcase-signboard">
           <option value="" disabled selected>انتخاب کنید</option>
@@ -132,15 +110,20 @@
       <label for="negotiation-result">نتیجه مذاکره</label>
       <select id="negotiation-result" required>
         <option value="" disabled selected>انتخاب کنید</option>
-        <option value="مجدد پیگیری شود">مجدد پیگیری شود</option>
         <option value="عدم حضور مدیریت">عدم حضور مدیریت</option>
         <option value="عدم تمایل به همکاری">عدم تمایل به همکاری</option>
-        <option value="عدم تمایل به همکاری با اسنپ">عدم تمایل به همکاری با اسنپ</option>
-        <option value="نارضایتی از شرایط همکاری">نارضایتی از شرایط همکاری</option>
-        <option value="نارضایتی از نحوه پرداخت">نارضایتی از نحوه پرداخت</option>
-        <option value="نارضایتی از کمیسیون">نارضایتی از کمیسیون</option>
-        <option value="نارضایتی از عدم نمایش آنلاین">نارضایتی از عدم نمایش آنلاین</option>
+        <option value="نیاز به زمان بیشتر برای فکر کردن">نیاز به زمان بیشتر برای فکر کردن</option>
       </select>
+      <div id="refuse-reason-container" style="display:none; margin-bottom:10px;">
+        <label for="refuse-reason">دلیل عدم همکاری</label>
+        <select id="refuse-reason">
+          <option value="" disabled selected>انتخاب کنید</option>
+          <option value="نداشتن مدرک و یا جواز معتبر">نداشتن مدرک و یا جواز معتبر</option>
+          <option value="درصد کمیسیون">درصد کمیسیون</option>
+          <option value="بازه پرداخت">بازه پرداخت</option>
+          <option value="عدم تمایل کلی به همکاری با اسنپ">عدم تمایل کلی به همکاری با اسنپ</option>
+        </select>
+      </div>
 
       <!-- توضیحات -->
       <label for="description">توضیحات</label>

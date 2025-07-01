@@ -102,6 +102,7 @@ function fillTable(vendors) {
       <td>${formatDate(v.start_time) || ''}</td>
       <td>${formatDate(v.end_time) || ''}</td>
       <td>${v.negotiation_result || ''}</td>
+      <td>${v.refuse_reason || ''}</td>
       <td>${v.description || ''}</td>
       <td>${v.promoter_name || ''}</td>
       <td>${v.photo ? `<img src="${v.photo}" alt="عکس" style="max-width:60px;max-height:60px;border-radius:6px;">` : ''}</td>
@@ -278,6 +279,7 @@ async function handleFilter(e) {
     has_bank_account: document.getElementById('filterHasBankAccount').value,
     has_minimum_area: document.getElementById('filterHasMinimumArea').value,
     negotiation_result: document.getElementById('filterResult').value,
+    refuse_reason: document.getElementById('filterRefuseReason').value,
     promoterId: document.getElementById('filterPromoter').value,
     startDate: document.getElementById('startDate').value,
     endDate: document.getElementById('endDate').value
@@ -300,5 +302,52 @@ window.addEventListener('DOMContentLoaded', async () => {
   showFirstVisitChart(allVendors);
   showMarketingAreaChart(allVendors);
   document.getElementById('filterForm').addEventListener('submit', handleFilter);
+
+  // افزودن فیلتر دلیل عدم همکاری
+  const refuseReasonSel = document.getElementById('filterRefuseReason');
+  if (refuseReasonSel) {
+    refuseReasonSel.addEventListener('change', handleFilter);
+  }
+
+  // افزودن دکمه دانلود CSV
+  const downloadCsvBtn = document.getElementById('downloadCsvBtn');
+  if (downloadCsvBtn) {
+    downloadCsvBtn.addEventListener('click', function() {
+      let csv = '';
+      const headers = [
+        'نام فروشگاه','نام مدیر','شماره تماس','نوع فروشگاه','نوع منطقه مارکتینگی','نام منطقه مارکتینگی','شهر','مراجعه اول','قرارداد ثبت شد','شروع مذاکره','پایان مذاکره','نتیجه مذاکره','دلیل عدم همکاری','توضیحات','انجام‌دهنده','عکس','مسیریابی'
+      ];
+      csv += headers.join(',') + '\n';
+      allVendors.forEach(v => {
+        const row = [
+          v.shop_name || '',
+          v.manager_name || '',
+          v.phone_number || '',
+          v.shop_type || '',
+          v.marketing_area_type || '',
+          v.marketing_area_name || '',
+          v.city || '',
+          v.is_first_visit || '',
+          v.contract_registered || '',
+          formatDate(v.start_time) || '',
+          formatDate(v.end_time) || '',
+          v.negotiation_result || '',
+          v.refuse_reason || '',
+          v.description || '',
+          v.promoter_name || '',
+          v.photo ? '[عکس]' : '',
+          (v.latitude && v.longitude) ? `https://www.google.com/maps/dir/?api=1&destination=${v.latitude},${v.longitude}` : ''
+        ];
+        csv += row.map(x => '"' + (x ? x.toString().replace(/"/g, '""') : '') + '"').join(',') + '\n';
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute('download', 'vendors_report.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
 });
   
